@@ -4,9 +4,9 @@ node {
        git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git'
     }
     stage('Clean-Compile') { 
-       sh "${mavenhome}/bin/mvn clean compile"
+       ${mavenhome}/bin/mvn clean compile
     }
     stage('Package') { 
-       sh "${mavenhome}/bin/mvn package"
+       ${mavenhome}/bin/mvn package
     }
 }
