@@ -1,11 +1,11 @@
 node {  
     stage('Git-Checkout') { 
-        echo "this is the Git-Checkout part" 
+       // 
     }
     stage('Clean-Compile') { 
-        echo "this is the Clean-Compile part" 
+       //
     }
     stage('Package') { 
-        echo "this is the Package part" 
+        //
     }
 }
