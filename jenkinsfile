@@ -1,12 +1,12 @@
 node { 
-    def maven-home = tool name: 'maven-home', type: 'maven'
+    def mavenhome = tool name: 'mavenhome', type: 'maven'
     stage('Git-Checkout') { 
        git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git'
     }
     stage('Clean-Compile') { 
-       $(maven-home)/bin/mvn clean compile
+       $(mavenhome)/bin/mvn clean compile
     }
     stage('Package') { 
-       $(maven-home)/bin/mvn package
+       $(mavenhome)/bin/mvn package
     }
 }
