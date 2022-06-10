@@ -1,0 +1,23 @@
+pipeline { 
+    agent any 
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('SCM-Checkout') { 
+            steps { 
+                git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git' 
+            }
+        }
+        stage('Clean-Compile'){
+            steps {
+                sh 'make check'
+                junit 'reports/**/*.xml' 
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'make publish'
+            }
+        }
+    }
