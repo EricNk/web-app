@@ -1,8 +1,8 @@
 pipeline { 
     agent any 
-    options {
-        skipStagesAfterUnstable()
-    }
+    tools {
+        maven 'mavenhome'
+        }
     stages {
         stage('SCM-Checkout') { 
             steps { 
@@ -11,13 +11,12 @@ pipeline {
         }
         stage('Clean-Compile'){
             steps {
-                sh 'make check'
-                junit 'reports/**/*.xml' 
+                sh "mvn clean compile"
             }
         }
         stage('Package') {
             steps {
-                sh 'make publish'
+                sh "mvn package"
             }
         }
     }
