@@ -3,18 +3,17 @@ pipeline {
     tools {
         maven 'mavenhome'
         }
-    stages {
-        stage('SCM-Checkout') { 
+     stage('SCM-Checkout') { 
             steps { 
                 git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git' 
             }
         }
-        stage('Clean-Compile'){
+     stage('Clean-Compile'){
             steps {
                 sh "mvn clean compile"
             }
         }
-        stage('Package') {
+     stage('Package') {
             steps {
                 sh "mvn package"
             }
