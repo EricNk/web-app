@@ -1,21 +1,24 @@
+
 pipeline { 
     agent any 
     tools {
         maven 'mavenhome'
         }
-     stage('SCM-Checkout') { 
+    stages {
+        stage('SCM-Checkout') { 
             steps { 
-                git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git' 
+                git branch: 'main', credentialsId: 'git-credential', url: 'https://github.com/EricNk/web-app.git'
             }
         }
-     stage('Clean-Compile'){
+        stage('Clean-Compile'){
             steps {
-                sh "mvn clean compile"
+                 sh "mvn clean compile"
             }
         }
-     stage('Package') {
+        stage('Package') {
             steps {
-                sh "mvn package"
+                 sh "mvn package"
             }
         }
     }
+}
